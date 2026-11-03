@@ -152,7 +152,8 @@ body {
 #papel h1 {
     color: #d66b8b;
     font-family: cursive;
-    margin-top: 25px;
+    margin-top: 10px;
+    font-size :20px
 }
 
 #papel h2 {
