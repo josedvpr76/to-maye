@@ -1,0 +1,255 @@
+body {
+    background-color: rosybrown;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+#carta {
+    width: 300px;
+    height: 200px;
+    background: #FFC5D3;
+    border: 2px solid rgb(104, 36, 36);
+    position: relative; 
+    overflow: visible;
+}
+
+#carta::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background: #da97a7;
+    top: 25%;
+    left: 0;
+    z-index: 0;
+}
+
+
+
+#tapa {
+    width: 100%;
+    height: 50%;
+    background: #d39696;
+    border: 2px solid rgb(180, 87, 87);
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    transform: rotateX(0deg);
+    transform-origin: top;
+    transition: transform 0.5s ease-in-out;
+}
+
+#carta.abierta #tapa {
+    transform: rotateX(180deg);
+    z-index: 0;
+}
+
+#corazon {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    animation: latido 1s infinite;
+}
+
+#carta.abierta img {
+    animation: desaparecer 0.5s forwards;
+}
+
+#carta:not(.abierta) img {
+    animation: aparecer 0.5s forwards, latido 1s 0.5s infinite;
+
+}
+
+#hoja {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 25%;
+    background: white;
+    z-index: 1;
+    text-align: center;
+}
+
+#hoja p {
+    color: #8b4557;
+    font-family: cursive;
+    font-size: 16px;
+}
+
+#papel {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 350px;
+    height: 450px;
+    background: white;
+    z-index: 20;
+    text-align: center;
+
+    opacity: 0;
+    visibility: hidden;
+    transform: translate(-50%, -50%) scale(0);
+}
+
+
+#tulipan-azul {
+    position: absolute;
+    width: 75px;
+    height: 90px;
+    top: -35px;
+    right: -25px;
+    z-index: 5;
+}
+
+#tulipan-rosa {
+    position: absolute;
+    width: 75px;
+    height: 90px;
+    bottom: -35px;
+    left: -25px;
+    z-index: 5;
+}
+
+
+.decoracion {
+    position: absolute;
+    width: 55px;
+    height: 55px;
+}
+
+.corazon1 {
+    top: 15px;
+    left: 15px;
+}
+
+.corazon2 {
+    bottom: 15px;
+    right: 15px;
+}
+
+.flor1 {
+    top: 10px;
+    right: 10px;
+    width: 65px;
+    height: 80px;
+}
+
+.flor2 {
+    bottom: 10px;
+    left: 10px;
+    width: 65px;
+    height: 80px;
+}
+#papel h1 {
+    color: #d66b8b;
+    font-family: cursive;
+    margin-top: 25px;
+}
+
+#papel h2 {
+    color: #d66b8b;
+    font-family: cursive;
+    margin-top: 100px;
+}
+
+#papel p {
+    color: #8b4557;
+    font-family: cursive;
+    padding: 15px;
+}
+
+#papel {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 350px;
+    height: 450px;
+    background: white;
+    z-index: 20;
+    text-align: center;
+
+    opacity: 0;
+    visibility: hidden;
+    transform: translate(-50%, -50%) scale(0);
+    pointer-events: none;
+}
+
+#papel.mostrar {
+    visibility: visible;
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+    pointer-events: auto;
+    animation: mostrar_carta 0.8s ease forwards;
+}
+
+#papel.ocultar {
+    animation: cerrar_carta 0.8s ease forwards;
+}
+
+
+@keyframes latido{
+    0%{
+        scale: 1;
+    }
+    25% {
+        scale: 1.02;
+    }
+    50% {
+        scale: 1;
+    }
+    75% {
+        scale: 1.02;
+    }
+    100% {
+        scale: 1;
+    }
+}
+
+@keyframes desaparecer{
+    0%{
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes aparecer{
+    0%{
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes mostrar_carta {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0);
+    }
+    100% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+
+@keyframes cerrar_carta {
+    0% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0);
+    }
+}
